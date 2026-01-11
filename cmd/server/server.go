@@ -16,10 +16,10 @@ type Server struct {
 }
 
 // NewServer: 서버를 초기화하고 라우팅을 설정합니다.
-func NewServer(addr string) *Server {
+func NewServer(addr string, dbName string) *Server {
 	// 1. 저장소 생성 (나중에 DB로 바꿀 때 여기만 수정하면 됨)
 	// userStore := store.NewUserStore()
-	userStore := store.NewSQLStore("users.db")
+	userStore := store.NewSQLStore(dbName)
 
 	// 2. 핸들러 생성
 	userHandler := handlers.NewUserHandler(userStore)
